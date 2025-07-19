@@ -6,7 +6,7 @@ import axios from "axios";
 // Google Login Button
 const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
-    window.location.href = "${import.meta.env.VITE_API_BASE_URL}/api/auth/google";
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/api/auth/google`;
   };
 
   return (
