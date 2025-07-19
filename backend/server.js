@@ -17,7 +17,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // your Vite frontend URL
+  origin: 'https://job-seeker-bice.vercel.app', // your Vite frontend URL
   credentials: true
 }));
 app.use(express.json());

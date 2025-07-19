@@ -399,7 +399,7 @@ router.post('/forgot-password', passwordResetLimiter, async (req, res) => {
     });
 
     // Create reset URL
-    const resetUrl = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}&email=${encodeURIComponent(normalizedEmail)}`;
+    const resetUrl = `${process.env.FRONTEND_URL || 'https://job-seeker-bice.vercel.app'}/reset-password?token=${resetToken}&email=${encodeURIComponent(normalizedEmail)}`;
 
     const html = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -586,7 +586,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
         );
 
         res.redirect(
-          `http://localhost:5173/auth/callback?token=${token}&user=${encodeURIComponent(
+          `https://job-seeker-bice.vercel.app/auth/callback?token=${token}&user=${encodeURIComponent(
             JSON.stringify({
               id: req.user._id,
               name: req.user.name,
@@ -598,7 +598,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
           )}`
         );
       } catch (error) {
-        res.redirect("http://localhost:5173/login?error=oauth_failed");
+        res.redirect("https://job-seeker-bice.vercel.app/login?error=oauth_failed");
       }
     }
   );
@@ -607,7 +607,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
     res.status(501).json({ message: "Google OAuth not configured" })
   );
   router.get("/google/callback", (req, res) =>
-    res.redirect("http://localhost:5173/login?error=oauth_not_configured")
+    res.redirect("https://job-seeker-bice.vercel.app/login?error=oauth_not_configured")
   );
 }
 
@@ -646,7 +646,7 @@ router.post("/register", async (req, res) => {
         }
         <br />
         <div style="text-align: center; margin-top: 30px;">
-          <a href="http://localhost:5173" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
+          <a href="https://job-seeker-bice.vercel.app" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
         </div>
         <p style="margin-top: 40px; font-size: 13px; color: #aaa; text-align: center;">
           If you did not register on our platform, you can safely ignore this email.
