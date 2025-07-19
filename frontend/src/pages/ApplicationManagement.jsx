@@ -310,7 +310,7 @@ const ApplicationManagement = () => {
                       <p>
                         <strong>Resume:</strong> 
                         <a 
-                          href={`http://localhost:5000${selectedApplication.applicant.resume.path}`}
+                          href={`${import.meta.env.VITE_API_BASE_URL}${selectedApplication.applicant.resume.path}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="ms-2"

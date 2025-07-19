@@ -68,7 +68,7 @@ const Profile = () => {
           <div className="profile-avatar">
             {profileData.profilePhoto ? (
               <img 
-                src={profileData.profilePhoto.startsWith('http') ? profileData.profilePhoto : `http://localhost:5000${profileData.profilePhoto}`}
+                src={profileData.profilePhoto.startsWith('http') ? profileData.profilePhoto : `${import.meta.env.VITE_API_BASE_URL}${profileData.profilePhoto}`}
                 alt="Profile" 
                 className="profile-avatar-img"
               />
@@ -208,7 +208,7 @@ const Profile = () => {
                 </div>
                 <div className="mt-3">
                   <a 
-                    href={`http://localhost:5000${profileData.resume.path}`} 
+                    href={`${import.meta.env.VITE_API_BASE_URL}${profileData.resume.path}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn btn-secondary"

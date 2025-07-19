@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 // Google Login Button Component
 const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    window.location.href = '${import.meta.env.VITE_API_BASE_URL}/api/auth/google';
   };
 
   return (
