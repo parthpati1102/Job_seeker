@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
@@ -586,7 +587,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
         );
 
         res.redirect(
-          `https://job-seeker-bice.vercel.app/auth/callback?token=${token}&user=${encodeURIComponent(
+          `${process.env.FRONTEND_URL}/auth/callback?token=${token}&user=${encodeURIComponent(
             JSON.stringify({
               id: req.user._id,
               name: req.user.name,
@@ -598,7 +599,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
           )}`
         );
       } catch (error) {
-        res.redirect("https://job-seeker-bice.vercel.app/login?error=oauth_failed");
+        res.redirect(`${process.env.FRONTEND_URL}/login?error=oauth_failed`);
       }
     }
   );
@@ -607,7 +608,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
     res.status(501).json({ message: "Google OAuth not configured" })
   );
   router.get("/google/callback", (req, res) =>
-    res.redirect("https://job-seeker-bice.vercel.app/login?error=oauth_not_configured")
+    res.redirect(`${process.env.FRONTEND_URL}/login?error=oauth_not_configured`)
   );
 }
 
@@ -646,7 +647,7 @@ router.post("/register", async (req, res) => {
         }
         <br />
         <div style="text-align: center; margin-top: 30px;">
-          <a href="https://job-seeker-bice.vercel.app" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
+          <a href="${process.env.FRONTEND_URL}" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Go to Dashboard</a>
         </div>
         <p style="margin-top: 40px; font-size: 13px; color: #aaa; text-align: center;">
           If you did not register on our platform, you can safely ignore this email.

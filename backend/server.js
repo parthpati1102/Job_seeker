@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log(process.env.FRONTEND_URL);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,13 +13,11 @@ const jobRoutes = require('./routes/jobs');
 const userRoutes = require('./routes/users');
 const applicationRoutes = require('./routes/applications');
 
-dotenv.config();
-
 const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://job-seeker-bice.vercel.app', // your Vite frontend URL
+  origin: process.env.FRONTEND_URL, // your Vite frontend URL
   credentials: true
 }));
 app.use(express.json());
